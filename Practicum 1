@@ -1,4 +1,48 @@
 {
+    abstract class Airplane<T>
+    {
+        public abstract void PowerAirplane(T power);
+        public abstract void PriceAirplane(T price);
+        public abstract void MarkaAirplane(T marka);
+    }
+}
+
+{
+    class TransportCompany<T> : Airplane<T>
+    {
+        T power;
+        T price;
+        T marka;
+
+        public T Power { get; set; }
+        public T Price { get; set; }
+        public T Marka { get; set; }
+
+        public void AllParam()
+        {
+            Power = power;
+            Price = price;
+            Marka = marka;
+        }
+
+        public override void PowerAirplane(T power)
+        {
+            Power = power;
+        }
+
+        public override void PriceAirplane(T price)
+        {
+            Price = price;
+        }
+
+        public override void MarkaAirplane(T marka)
+        {
+            Marka = marka;
+        }
+    }
+}
+
+{
     /// <summary>
     /// Общедоступный класс Calculator с универсальным параметром <T>
     /// </summary>
