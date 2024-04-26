@@ -1,0 +1,247 @@
+{
+    /// <summary>
+    /// Общедоступный класс Calculator с универсальным параметром <T>
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    class Calculator<T>
+    {
+        /// <summary>
+        /// Поле addsub с универсальным параметром <T>
+        /// </summary>
+        T addsub;
+
+        /// <summary>
+        /// Поле muldiv с универсальным параметром <T>
+        /// </summary>
+        T muldiv;
+
+        /// <summary>
+        /// Свойство AddSub с уникальным параметром T
+        /// </summary>
+        public T AddSub { get; set; }
+
+        /// <summary>
+        /// Свойство MulDiv с уникальным параметром T
+        /// </summary>
+        public T MulDiv { get; set; }
+
+        /// <summary>
+        /// Метод для вывода информации по свойствам
+        /// </summary>
+        public void GetT()
+        {
+            AddSub = addsub;
+            MulDiv = muldiv;
+        }
+
+        /// <summary>
+        /// Метод для сложения
+        /// </summary>
+        /// <param name="add"></param>
+        public void Add(T add)
+        {
+            AddSub = add;
+        }
+
+        /// <summary>
+        /// Метод для вычитания
+        /// </summary>
+        /// <param name="sub"></param>
+        public void Sub(T sub)
+        {
+            AddSub = sub;
+        }
+
+        /// <summary>
+        /// Метод для умножения
+        /// </summary>
+        /// <param name="mul"></param>
+        public void Mul(T mul)
+        {
+            MulDiv = mul;
+        }
+
+        /// <summary>
+        /// Метод для деления
+        /// </summary>
+        /// <param name="div"></param>
+        public void Div(T div)
+        {
+            MulDiv = div;
+        }
+    }
+}
+
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Вам представлен ряд где вы можете поработать с калькуляторами: ");
+            Console.WriteLine("1-Числовой \n2-Объектный \n3-Строковый");
+            Console.WriteLine("Выберите один из них: ");
+            string choise = Console.ReadLine();
+            switch (choise)
+            {
+                case "1":
+                    Calculator<int> calculator = new Calculator<int>();
+                    int x = 10;
+                    object y = 5;
+                    int i = 0;
+                    bool flag;
+
+                    flag = true;
+                    while (flag)
+                    {
+                        Console.WriteLine("Выберите действие арифметическое:\n1)сложение-(+) \n2)вычитание-(-), \n3)умножение-(*), \n4)деление-(/)");
+                        string chosie = Console.ReadLine();
+                        switch (chosie)
+                        {
+                            case "+":
+                                Console.WriteLine("Вы выбрали операцию сложение: ");
+                                int add = calculator.AddSub;
+                                calculator.Add(x + (int)y);
+                                i++;
+                                continue;
+
+                            case "-":
+                                Console.WriteLine("Вы выбрали операцию вычитания: ");
+                                int sub = calculator.AddSub;
+                                calculator.Sub(x - (int)y);
+                                i++;
+                                continue;
+
+                            case "*":
+                                Console.WriteLine("Вы выбрали операцию умножение: ");
+                                int mul = calculator.MulDiv;
+                                calculator.Mul(x * (int)y);
+                                i++;
+                                continue;
+
+                            case "/":
+                                Console.WriteLine("Вы выбрали операцию деление: ");
+                                int div = calculator.MulDiv;
+                                calculator.Div(x * (int)y);
+                                i++;
+                                continue;
+                        }
+
+                        if (i == 4)
+                        {
+                            calculator.GetT();
+                        }
+                        flag = false;
+                        break;
+                    }
+                    flag = false;
+                    break;
+
+                case "2":
+                    Calculator<object> calculator1 = new Calculator<object>();
+                    x = 10;
+                    y = (double)5.5;
+                    object z = 13;
+                    i = 0;
+                    bool flag1;
+
+                    flag1 = true;
+                    while (flag1)
+                    {
+                        Console.WriteLine("Выберите действие арифметическое:\n1)сложение-(+) \n2)вычитание-(-), \n3)умножение-(*), \n4)деление-(/)");
+                        string chosie = Console.ReadLine();
+                        switch (chosie)
+                        {
+                            case "+":
+                                Console.WriteLine("Вы выбрали операцию сложение: ");
+                                object add = calculator1.AddSub;
+                                calculator1.Add(x + (int)y + (int)z);
+                                i++;
+                                continue;
+
+                            case "-":
+                                Console.WriteLine("Вы выбрали операцию вычитания: ");
+                                int sub = (int)calculator1.AddSub;
+                                calculator1.Sub(x - (int)y - (int)z);
+                                i++;
+                                continue;
+
+                            case "*":
+                                Console.WriteLine("Вы выбрали операцию умножение: ");
+                                int mul = (int)calculator1.MulDiv;
+                                calculator1.Mul(x * (int)y * (int)z);
+                                i++;
+                                continue;
+
+                            case "/":
+                                Console.WriteLine("Вы выбрали операцию деление: ");
+                                double div = (double)calculator1.MulDiv;
+                                calculator1.Div(x / (int)y / (int)z);
+                                i++;
+                                continue;
+                        }
+
+                        if (i == 4)
+                        {
+                            calculator1.GetT();
+                        }
+                        flag = false;
+                        break;
+                    }
+                    break;
+
+                case"3":
+                    Calculator<string> calculator2 = new Calculator<string>();
+                    x = 10;
+                    y = "2";
+                    i = 0;
+                    bool flag2;
+
+                    flag2 = true;
+                    while (flag2)
+                    {
+                        Console.WriteLine("Выберите действие арифметическое:\n1)сложение-(+) \n2)вычитание-(-), \n3)умножение-(*), \n4)деление-(/)");
+                        string chosie = Console.ReadLine();
+                        switch (chosie)
+                        {
+                            case "+":
+                                Console.WriteLine("Вы выбрали операцию сложение: ");
+                                object add = calculator2.AddSub;
+                                calculator2.Add($"{x + int.Parse(y.ToString())}"); 
+                                i++;
+                                continue;
+
+                            case "-":
+                                Console.WriteLine("Вы выбрали операцию вычитания: ");
+                                string sub = calculator2.AddSub;
+                                calculator2.Sub($"{x - int.Parse(y.ToString())}");
+                                i++;
+                                continue;
+
+                            case "*":
+                                Console.WriteLine("Вы выбрали операцию умножение: ");
+                                string mul = calculator2.MulDiv;
+                                calculator2.Mul($"{x * int.Parse(y.ToString())}");
+                                i++;
+                                continue;
+
+                            case "/":
+                                Console.WriteLine("Вы выбрали операцию деление: ");
+                                string div = calculator2.MulDiv;
+                                calculator2.Div($"{x / int.Parse(y.ToString())}");
+                                i++;
+                                continue;
+                        }
+
+                        if (i == 4)
+                        {
+                            calculator2.GetT();
+                        }
+                        flag = false;
+                        Console.ReadKey();
+                        break;
+                    }
+                    break;
+            }
+        }
+    }
+}
