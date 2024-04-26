@@ -1,0 +1,84 @@
+{
+    /// <summary>
+    /// Обобщённый класс Triagle с универсальным параметром T
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    class Triagle<T>
+    {
+        /// <summary>
+        /// поле side1
+        /// </summary>
+        T side1;
+        /// <summary>
+        /// поле side2
+        /// </summary>
+        T side2;
+
+        /// <summary>
+        /// поле side3
+        /// </summary>
+        T side3;
+
+        /// <summary>
+        /// Свойство Side1 с дополнительной логикой
+        /// </summary>
+        public T Side1
+        {
+            get { return side1; }
+            set { value = side1; }
+        }
+
+        /// <summary>
+        /// Свойство Side2 с дополнительной логикой
+        /// </summary>
+        public T Side2
+        {
+            get { return side2; }
+            set { value = side2; }
+        }
+
+        /// <summary>
+        /// Свойство Side3 с дополнительной логикой
+        /// </summary>
+        public T Side3
+        {
+            get { return side3; }
+            set { value = side3; }
+        }
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Triagle()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с тремя параметрами
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        public Triagle(T a, T b, T c)
+        {
+            Side1 = a;
+            Side2 = b;
+            Side3 = c;
+        }
+
+        /// <summary>
+        /// Метод выводящий информацию по Трегольнику
+        /// </summary>
+        public void PrintTriagle()
+        {
+            Console.WriteLine($"Стороны - {Side1}, {Side2}, {Side3}");
+        }
+
+        public T TriagleSquare()
+        {
+            T p;
+            return p = (int)Math.Sqrt();
+        }
+    }
+}
