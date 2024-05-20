@@ -1,0 +1,201 @@
+{
+    /// <summary>
+    /// Общённый класс Point
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    class Point<T>
+    {
+        /// <summary>
+        /// Поле x
+        /// </summary>
+        private T x;
+
+        /// <summary>
+        /// Поле y
+        /// </summary>
+        private T y;
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Point()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с двумя параметрами
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        public Point(T x, T y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        /// <summary>
+        /// Свойство X
+        /// </summary>
+        public T X
+        {
+            get { return x; }
+            set { x = value; }
+        }
+
+        /// <summary>
+        /// Свойство Y
+        /// </summary>
+        public T Y
+        {
+            get { return y; }
+            set { y = value; }
+        }
+
+        /// <summary>
+        /// Метод для вывода информации по точкам
+        /// </summary>
+        public void Info()
+        {
+            Console.WriteLine($"Точка x: {X}, Точка y: {Y}");
+        }
+    }
+}
+
+{
+    /// <summary>
+    /// Обобщённый класс Triagle
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    class Triagle<T>
+    {
+        /// <summary>
+        /// Поле a
+        /// </summary>
+        private T a;
+
+        /// <summary>
+        /// Поле b
+        /// </summary>
+        private T b;
+
+        /// <summary>
+        /// Поле c
+        /// </summary>
+        private T c;
+
+        /// <summary>
+        /// Свойство A
+        /// </summary>
+        public T A
+        {
+            get { return a; }
+            set { value = a; }
+        }
+
+        /// <summary>
+        /// Свойство B
+        /// </summary>
+        public T B
+        {
+            get { return b; }
+            set { value = b; }
+        }
+
+        /// <summary>
+        /// Свойство C
+        /// </summary>
+        public T C
+        {
+            get { return c; }
+            set { value = c; }
+        }
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Triagle()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с тремя параметрами
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        public Triagle(T a, T b, T c)
+        {
+            if ((dynamic)A<(dynamic)B+(dynamic)C && (dynamic)B<(dynamic)A+(dynamic)C && (dynamic)C<(dynamic)A+(dynamic)B)
+            {
+                A = a;
+                B = b;
+                C = c;
+            }
+
+            else
+            {
+                Console.WriteLine("Треугольник не существует");
+            }
+        }
+
+        /// <summary>
+        /// Метод для вывода информации по треугольнику
+        /// </summary>
+        public void PrintInfo()
+        {
+            Console.WriteLine($"Треугольник со сторонами: A-{A}\nB-{B}\nC-{C}");
+        }
+
+        /// <summary>
+        /// Метод для площади треугольника
+        /// </summary>
+        /// <returns></returns>
+        public double Area()
+        {
+            dynamic a1 = A;
+            dynamic b1 = B;
+            dynamic c1 = C;
+            if (a1 == 0 && b1 == 0 && c1 == 0)
+            {
+                Console.WriteLine("Треугольник не существует");
+                return 0;
+            }
+
+            else
+            {
+                dynamic p = (double)(a1 + b1 + c1) / 2;
+                return Math.Sqrt((dynamic)p * ((dynamic)p - a1) * ((dynamic)p - b1) * ((dynamic)p - c1));
+            }
+        }
+    }
+}
+
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //1-Задание
+            Point<int> point = new Point<int>(1,0);
+            point.Info();
+            Point<uint> point1 = new Point<uint>(3u,5u);
+            point1.Info();
+            Point<double> point2 = new Point<double>(5.2,12);
+            point2.Info();
+
+            //2-Задание
+            Triagle<int> triagle = new Triagle<int>(2, 3, 4);
+            triagle.PrintInfo();
+            Console.WriteLine($"Площадь: {triagle.Area()}");
+            Triagle<uint> triagle1 = new Triagle<uint>(3u, 2u, 5u);
+            triagle1.PrintInfo();
+            Console.WriteLine($"Площадь: {triagle1.Area()}");
+            Triagle<double> triagle2 = new Triagle<double>(3.1, 5, 4.2);
+            triagle2.PrintInfo();
+            Console.WriteLine($"Площадь: {triagle2.Area()}");
+            Console.ReadKey();
+        }
+    }
+}
