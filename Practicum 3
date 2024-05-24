@@ -173,6 +173,97 @@
 }
 
 {
+    /// <summary>
+    /// Класс Segment, c универсальным параметром
+    /// </summary>
+    /// <typeparam name="T">Универсальный параметр</typeparam>
+    class Segment<T> where T: struct, IComparable<T>, IConvertible 
+    {
+        /// <summary>
+        /// Поле x1
+        /// </summary>
+        private T x1;
+
+        /// <summary>
+        /// Поле x2
+        /// </summary>
+        private T x2;
+        
+        /// <summary>
+        /// Поле y1
+        /// </summary>
+        private T y1;
+
+        /// <summary>
+        /// Поле y2
+        /// </summary>
+        private T y2;
+
+        /// <summary>
+        /// Свойство X1
+        /// </summary>
+        public T X1 { get {return x1; } set {x1 = value; } }
+
+        /// <summary>
+        /// Свойство X2
+        /// </summary>
+        public T X2 { get {return x2; } set {x2 = value; } }
+
+        /// <summary>
+        /// Свойство Y1
+        /// </summary>
+        public T Y1 { get {return y1; } set {y1 = value; } }
+
+        /// <summary>
+        /// Свойство Y2
+        /// </summary>
+        public T Y2 { get {return y2; } set {y2 = value; } }
+
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Segment()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с четырьмя параметрами
+        /// </summary>
+        /// <param name="x1">x1</param>
+        /// <param name="x2">x2</param>
+        /// <param name="y1">y1</param>
+        /// <param name="y2">y2</param>
+        public Segment(T x1, T x2, T y1, T y2)
+        {
+            this.x1 = x1;
+            this.x2 = x2;
+            this.y1 = y1;
+            this.y2 = y2;
+        }
+
+        /// <summary>
+        /// Метод для вывода информации об отрезке
+        /// </summary>
+        public void InfoSegment()
+        {
+            Console.WriteLine($"Отрезок с координатами с заданых точек: ({X1}, {Y1}) и ({X2}, {Y2})");
+        }
+
+        /// <summary>
+        /// Метод для длины отрезка
+        /// </summary>
+        /// <returns>длину отрезка</returns>
+        public double Length()
+        {
+            dynamic A = Convert.ToDouble(x2)-Convert.ToDouble(x1);
+            dynamic B = Convert.ToDouble(y2)-Convert.ToDouble(y1);
+            return Math.Sqrt(A * A + B * B);
+        }
+    }
+}
+
+{
     class Program
     {
         static void Main(string[] args)
@@ -195,6 +286,20 @@
             Triagle<double> triagle2 = new Triagle<double>(3.1, 5, 4.2);
             triagle2.PrintInfo();
             Console.WriteLine($"Площадь: {triagle2.Area()}");
+
+            //3-Задание
+            Segment<int> segmentint = new Segment<int>(1, 2, 4, 6);
+            segmentint.InfoSegment();
+            Console.WriteLine($"Длина отрезка: {segmentint.Length()}");
+
+            Segment<long> segmentlong = new Segment<long>(1000000, 2220000000, 30000000, 4000000);
+            segmentlong.InfoSegment();
+            Console.WriteLine($"Длина отрезка: {segmentlong.Length()}");
+
+            Segment<double> segmentdouble = new Segment<double>(1.2, 2.4, 4.6, 5.1);
+            segmentdouble.InfoSegment();
+            Console.WriteLine($"Длина отрезка: {segmentdouble.Length()}");
+            
             Console.ReadKey();
         }
     }
